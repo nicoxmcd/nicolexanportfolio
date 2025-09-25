@@ -8,7 +8,7 @@ category: Projects
 draft: false
 ---
 
-> You're experiencing this project right now: [Home](https://nicoxmcd.com)
+> You're experiencing this project right now: [Home](https://nicolexan.com)
 
 :::note
 Instead of creating the project through the console, then converting it to use IaC later on, I started with creating the infrastructure through Terraform.
@@ -45,7 +45,7 @@ I keep my IaC in my Cloud repository:
 ```hcl
 terraform {
   backend "s3" {
-    bucket         = "nicoxmcdportfolio-tfstate"
+    bucket         = "nicolexanportfolio-tfstate"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-locks"
@@ -56,8 +56,8 @@ terraform {
 
 `terraform.tfvars` sets up the project's input variable values: `domain_name` and `bucket_name` that way I can reuse this across environments.
 ```hcl
-domain_name = "nicoxmcd.com"
-bucket_name = "nicoxmcdportfolio"
+domain_name = "nicolexan.com"
+bucket_name = "nicolexanportfolio"
 ```
 
 `variables.tf` defines input variables for the `domain_name`, `bucket_name`, and `region`, while also providing descriptions and default values to make the configuration a bit more flexible.
@@ -92,7 +92,7 @@ provider "aws" {
 }
 ```
 
-`s3.tf` creates an S3 bucket to host nicoxmcdportfolio and configures it as a static website, defining the `index_document` and `error_document`.
+`s3.tf` creates an S3 bucket to host nicolexanportfolio and configures it as a static website, defining the `index_document` and `error_document`.
 ```hcl
 resource "aws_s3_bucket" "portfolio" {
   bucket = "${var.bucket_name}"
@@ -209,7 +209,7 @@ resource "aws_route53_zone" "main" {
 }
 
 # Alias using DNS records pointing to CloudFront not directly to S3
-# Direct www.nicoxmcd.com to www.nicoxmcd.com
+# Direct www.nicolexan.com to www.nicolexan.com
 resource "aws_route53_record" "www_a" {
   zone_id = aws_route53_zone.main.zone_id
   name    = "www.${var.domain_name}"
@@ -222,7 +222,7 @@ resource "aws_route53_record" "www_a" {
   }
 }
 
-# Redirect apex (nicoxmcd.com) to www.nicoxmcd.com
+# Redirect apex (nicolexan.com) to www.nicolexan.com
 resource "aws_route53_record" "apex_redirect" {
   zone_id = aws_route53_zone.main.zone_id
   name    = var.domain_name
@@ -350,12 +350,12 @@ resource "aws_acm_certificate_validation" "cert_validation" {
 
 
 ## Automation and CI/CD
-The first issues I had when deploying the infrastructure was originally not maintaining a state file or importing the resources. Terraform would recreate each resource every time you ran the workflow. It was resolved by importing the specific resources, that way Terraform would recognize that those resources do not need to be created, just updated. I went back and implemented a state file by manually creating a new S3 bucket `nicoxmcdportfolio-tfstate` and a DynamoDB table for locking `terraform-locks`.
+The first issues I had when deploying the infrastructure was originally not maintaining a state file or importing the resources. Terraform would recreate each resource every time you ran the workflow. It was resolved by importing the specific resources, that way Terraform would recognize that those resources do not need to be created, just updated. I went back and implemented a state file by manually creating a new S3 bucket `nicolexanportfolio-tfstate` and a DynamoDB table for locking `terraform-locks`.
 
 
 ### Frontend
 The frontend is deployed directly from its repository upon any changes made to the `main` branch.
-`deploy.yml` configures OpenID Connection (OIDC) to AWS which allows the repository to update resources in AWS using a predefined role. The role in AWS only allows these requests from the `main` branches of `nicoxmcd/nicoxmcdportfolio` and `nicoxmcd/Cloud`. I run a check for Astro to ensure that Astro is configured correctly, if so, it then builds the project, which creates a `/dist` folder with all of the built `.html` files. From there I sync the `/dist` folder to my `nicoxmcdportfolio` S3 bucket.
+`deploy.yml` configures OpenID Connection (OIDC) to AWS which allows the repository to update resources in AWS using a predefined role. The role in AWS only allows these requests from the `main` branches of `nicoxmcd/nicolexanportfolio` and `nicoxmcd/Cloud`. I run a check for Astro to ensure that Astro is configured correctly, if so, it then builds the project, which creates a `/dist` folder with all of the built `.html` files. From there I sync the `/dist` folder to my `nicolexanportfolio` S3 bucket.
 ```yml
 name: Deploy Static Site
 
@@ -367,7 +367,7 @@ on:
 
 env:
   AWS_REGION : "us-east-1"
-  BUCKET_NAME: nicoxmcdportfolio
+  BUCKET_NAME: nicolexanportfolio
 
 permissions:
       id-token: write   # This is required for requesting the JWT
@@ -411,7 +411,7 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ env.BUCKET_NAME }} 
 ```
-::github{repo="nicoxmcd/nicoxmcdportfolio"}
+::github{repo="nicoxmcd/nicolexanportfolio"}
 
 ### IaC
 The infrastructure is deployed directly from the Cloud repository via a workflow_dispatch with an option for only generating the Terraform plan (which is automatically `True`).
@@ -431,7 +431,7 @@ on:
         required: true
         type: choice
         options:
-          - nicoxmcdportfolio
+          - nicolexanportfolio
       dry_run:
         description: 'True for PLAN ONLY'
         required: true

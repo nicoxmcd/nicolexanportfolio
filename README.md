@@ -4,4 +4,4 @@
 
 Welcome to my portfolio! This is utilizing the AWS Cloud Resume Challenge written by Forrest Brazeal, he outlines a loose set of requirements and this is what I've come up with! Please feel free to explore and read the blogs I've written.
 
-[Portfolio](https://nicoxmcd.com/)
+[Portfolio](https://nicolexan.com/)

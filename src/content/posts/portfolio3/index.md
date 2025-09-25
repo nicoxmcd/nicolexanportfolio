@@ -15,10 +15,10 @@ This section covers the final stretch of the challenge, talking about how I impl
 `view_counter.py` is the Lambda function I built in the previous section. I did make some minor adjustments like specifying the `region_name` for the `dynamodb` resource and instead of using a dynamic naming technique for the `dynamodb.Table`, I hard-coded it, since this is for this project anyhow. I came across long-winded errors from the Python Unittest without these things defined, so I figured this was the best way to mitigate them.
 ```python
 dynamodb = boto3.resource("dynamodb", region_name='us-east-1')
-table = dynamodb.Table("nicoxmcdportfolio-views")
+table = dynamodb.Table("nicolexanportfolio-views")
 ```
 
-`test_counter.py` is a test file in the `tests/` directory within the `nicoxmcdportfolio` section. This test is fairly simple since the lambda function itself it simple. The original lambda function should increment the view count by 1. In this test, I import the `view_counter.py` script as `vc` and patch the `dynamodb.Table`. From there we define a mock table with the views set to 5. Since there are only five views, it should return 6 after running the `view_counter.py`. If it returns 6 and `StatusCode = 200`, then it will return as a success. This logic will become more complex as I continue to add more to the lambda function. I plan to add some sort of way to count unique views only, so this might change the way the current test is working.
+`test_counter.py` is a test file in the `tests/` directory within the `nicolexanportfolio` section. This test is fairly simple since the lambda function itself it simple. The original lambda function should increment the view count by 1. In this test, I import the `view_counter.py` script as `vc` and patch the `dynamodb.Table`. From there we define a mock table with the views set to 5. Since there are only five views, it should return 6 after running the `view_counter.py`. If it returns 6 and `StatusCode = 200`, then it will return as a success. This logic will become more complex as I continue to add more to the lambda function. I plan to add some sort of way to count unique views only, so this might change the way the current test is working.
 ```python
 import unittest
 import json
@@ -118,7 +118,7 @@ Because I'm most familiar with GitHub Actions, I do want to go through the docum
 ## Resources
 Feel free to check out the source code for both the cloud infrastructure and portfolio source code.
 
-::github{repo="nicoxmcd/nicoxmcdportfolio"}
+::github{repo="nicoxmcd/nicolexanportfolio"}
 
 ::github{repo="nicoxmcd/cloud"}
 

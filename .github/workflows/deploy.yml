@@ -8,7 +8,7 @@ on:
 
 env:
   AWS_REGION : "us-east-1"
-  BUCKET_NAME: nicoxmcdportfolio
+  BUCKET_NAME: nicolexanportfolio
 
 permissions:
       id-token: write   # This is required for requesting the JWT

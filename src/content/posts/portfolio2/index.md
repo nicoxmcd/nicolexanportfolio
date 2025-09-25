@@ -8,7 +8,7 @@ category: Projects
 draft: false
 ---
 
-> You're experiencing this project right now: [Home](https://nicoxmcd.com)
+> You're experiencing this project right now: [Home](https://nicolexan.com)
 
 :::note[The Goal]
 The main idea behind this section of the Cloud challenge was implementing a visitor counter using the API Gateway, Lamdbda, and DynamoDB.
@@ -27,7 +27,7 @@ Since the last past, I've added a couple more resources.
 `api.tf` routes calls and specifies what's allowed, allowing the site to fetch from lambda. 
 ```hcl
 resource "aws_apigatewayv2_api" "api" {
-  name          = "nicoxmcdportfolio-api"
+  name          = "nicolexanportfolio-api"
   protocol_type = "HTTP"
   
   cors_configuration {
@@ -73,7 +73,7 @@ resource "aws_apigatewayv2_stage" "default_stage" {
 `db.tf` sets up the DynamoDB table with its attributes.
 ```hcl
 resource "aws_dynamodb_table" "db" {
-  name           = "nicoxmcdportfolio-views"
+  name           = "nicolexanportfolio-views"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "ID"
 
@@ -88,13 +88,13 @@ resource "aws_dynamodb_table" "db" {
 }
 ```
 ### Another Problem Solved
-Originally I had the initial item `nicoxmcdportfolio-views' set to 0.
+Originally I had the initial item `nicolexanportfolio-views' set to 0.
 ```hcl
 resource "aws_dynamodb_table_item" "initial_view_count" {
   table_name = aws_dynamodb_table.db.name
   hash_key   = "ID"
   item       = jsonencode({
-    ID    = { S = "nicoxmcdportfolio" },
+    ID    = { S = "nicolexanportfolio" },
     views = { N = "0" }
   })
 }
@@ -102,8 +102,8 @@ resource "aws_dynamodb_table_item" "initial_view_count" {
 However, whenever I would make updates to the infrastructure, this number would reset to 0. *Which is not ideal.* So, I decided to make the initial value manually through the AWS CLI instead. 
 ```bash
 aws dynamodb put-item \
-  --table-name nicoxmcdportfolio-views \
-  --item '{"ID": {"S": "nicoxmcdportfolio"}, "views": {"N": "0"}}'
+  --table-name nicolexanportfolio-views \
+  --item '{"ID": {"S": "nicolexanportfolio"}, "views": {"N": "0"}}'
 ```
 That way, it's not stored in the Terraform state tf and therefore wouldn't be changed when updating the infrastructure. 
 
@@ -140,7 +140,7 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb_access" {
 }
 
 resource "aws_lambda_function" "view_counter" {
-  function_name = "nicoxmcdportfolio-view-counter"
+  function_name = "nicolexanportfolio-view-counter"
   handler       = "view-counter.lambda_handler"
   runtime       = "python3.11"
   role          = aws_iam_role.lambda_exec_role.arn
@@ -155,7 +155,7 @@ resource "aws_lambda_function" "view_counter" {
   }
 }
 ```
-`view-counter.py` contains the functions code that gets uploaded to Lambda. The script grabs the views value from the ID `nicoxmcdportfolio` and increments it by one and stores the updated value back in the table. If this is successful, it returns a `StatusCode: 200` and the view count.
+`view-counter.py` contains the functions code that gets uploaded to Lambda. The script grabs the views value from the ID `nicolexanportfolio` and increments it by one and stores the updated value back in the table. If this is successful, it returns a `StatusCode: 200` and the view count.
 
 ```python
 import boto3
@@ -167,14 +167,14 @@ table = dynamodb.Table(os.environ["TABLE_NAME"])
 
 def lambda_handler(event, context):
     # Retrieve the current visitor count
-    item = table.get_item(Key={"ID":"nicoxmcdportfolio"})
+    item = table.get_item(Key={"ID":"nicolexanportfolio"})
     views = int(item["Item"]["views"])
 
     # Increment the visitor count
     views += 1
 
     # Update the DynamoDB table with the new count
-    table.put_item(Item={"ID":"nicoxmcdportfolio", "views": views})
+    table.put_item(Item={"ID":"nicolexanportfolio", "views": views})
 
     return {
         "statusCode": 200,
