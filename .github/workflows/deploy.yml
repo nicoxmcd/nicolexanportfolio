@@ -1,0 +1,58 @@
+name: Deploy Static Site
+
+on:
+    push:
+      branches:
+        - 'main'
+    workflow_dispatch:
+
+env:
+  AWS_REGION : "us-east-1"
+  BUCKET_NAME: nicoxmcdportfolio
+
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+      
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_DEPLOY }}
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
+          
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: latest
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+            
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+     
+      - name: Install Dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Add API URL
+        run: |
+          API_URL=${{ secrets.API_URL }}
+          sed -i "s|__VIEW_COUNTER_URL__|$API_URL|g" src/components/Navbar.astro
+
+      - name: Run Astro Check
+        run: pnpm astro check
+    
+      - name: Run Astro Build
+        run: pnpm build
+          
+      - name: Deploy to S3
+        run: |
+          aws s3 sync dist/ s3://${{ env.BUCKET_NAME }} 
