@@ -5,7 +5,7 @@ description: "Describing how our team utilized json files to deploy multi enviro
 image: ""
 tags: ["Project", "DevOps", "CI/CD"]
 category: DevOps Projects
-draft: true
+draft: false
 ---
 
 ## Overview

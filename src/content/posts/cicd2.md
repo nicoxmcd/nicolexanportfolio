@@ -5,7 +5,7 @@ description: "Working across teams to reduce time for QA team unit testing."
 image: ""
 tags: ["Project", "DevOps", "CI/CD"]
 category: DevOps Projects
-draft: true
+draft: false
 ---
 
 ## Overview
