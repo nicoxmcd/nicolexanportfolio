@@ -1,48 +1,33 @@
-# Education
-:::tip[[Stevens Institute of Technology, Hoboken, NJ](https://www.stevens.edu/)]
-*B.E. Computer Engineering, Network Security, with Honors*
-- **Dean's List**: Spring 2024, Fall 2024, Spring 2025
-:::
-
 # Experience
-
-:::tip[[SPHERE Technology Solutions, Newark, NJ](https://sphereco.com/)]
-*Cloud DevOps Engineer - September 2025 - Current*
-- Design a highly available SaaS networking architecture with multi-AZ deployments to support reliability and scalability. 
-- Own and operate the cloud infrastructure for a new SaaS product, handling both initial setup and ongoing improvements
-- Implement least-privilege IAM roles and policies, including OIDC-based roles for GitHub Actions used in CI/CD workflows
-- Build and manage CI/CD pipelines for Terraform deployments, Docker image builds, ECR publishing, and application deployments to EKS
-- Use Terraform with reusable modules and workspaces to manage infrastructure across environments
-- Secure the platform using VPC networking, security groups, NACLs, and IAM best practices
-- Automate RDS provisioning and database initialization with SQL scripts as part of infrastructure deployment
-- Design a decoupled application architecture that allows individual services to be updated and deployed independently
-- Configure and operate Amazon EKS clusters, including node groups and application workloads
-- Troubleshoot Kubernetes, EKS, and Docker issues encountered during development and deployment
-- Work closely with a small team to build, deploy, and iterate a new SaaS product
+:::tip[DevOps Engineer @ [The Walt Disney Company, NYC](https://disney.com/) Since 2026]
+- Working on the CI/CD for building Living Room device applications such as Disney+, ESPN, and Hulu.
+- Unifying existing systems spread across different tools.
+- Responding to ad-hoc requests and supporting other teams with CI/CD, AWS infrastructure, and Jenkins.
 :::
-:::tip[[SPHERE Technology Solutions, Newark, NJ](https://sphereco.com/)]
-*DevOps Engineer - September 2022 - September 2025*
-- Worked with product development teams to enhance CI/CD processes that meet specific constraints while optimizing deployment efficiency by 60%, adapting to shifting project priorities and tight timelines
-- Provided strategic recommendations and re-architected entire CI/CD pipeline structure reducing build time by up to 90% and reducing delivery time by over 50% utilizing GitHub Actions and Jenkins
-- Identified and implemented improvements to unit testing workflow, reducing testing time by 30% by utilizing a matrix strategy to enable parallel workstreams
+
+:::tip[Cloud DevOps Engineer @ [SPHERE Technology Solutions, Newark, NJ](https://sphereco.com/) 2025-2026]
+- Designed a highly available SaaS networking architecture with multi-AZ deployments to support reliability and scalability. 
+- Owned and operated the cloud infrastructure for a new SaaS product, handling both initial setup and ongoing improvements
+- Implemented least-privilege IAM roles and policies, including OIDC-based roles for GitHub Actions used in CI/CD workflows
+- Built and managed CI/CD pipelines for Terraform deployments, Docker image builds, ECR publishing, and application deployments to EKS
+- Secured the platform using VPC networking, security groups, NACLs, and IAM best practices
+- Automated RDS provisioning and database initialization with SQL scripts as part of infrastructure deployment
+- Designed a decoupled application architecture that allows individual services to be updated and deployed independently
+- Configured and operated Amazon EKS clusters, including node groups and application workloads
+:::
+:::tip[DevOps Engineer @ [SPHERE Technology Solutions, Newark, NJ](https://sphereco.com/) 2022-2025]
+- Collaborated with product development teams to enhance CI/CD processes while optimizing efficiency by 60%, reliability, and security adapting to shifting project priorities and tight timelines
+- Strategized and architected CI/CD pipeline structure, reducing build time by up to 90% and reducing delivery time by over 50% utilizing GitHub Actions and Jenkins
+- Identified and implemented improvements to unit testing workflow, reducing testing time by 30%
 - Developed an automated configuration process for Artifactory, reducing manual overhead by 50% and ensuring security, reliability, and replicability
-- Configuring and deploying virtual machines in Azure Cloud and on-prem VMWare as testing environments to support new and existing development priorities
-- Providing on-call support for critical production deployments to a SaaS product to maximize uptime and service availability
+- Configured and deployed virtual machines in Azure Cloud and on-prem VMWare as testing environments to support new and existing development priorities
+- Provided on-call support for critical production deployments to a SaaS product to maximize uptime and service availability
 :::
 ![SPHERE Stack](./sphereskills.png)
-:::tip[[Gumiho, Ridgefield, NJ](https://www.gumihollc.com/)]
-*Executive Assistant & Engineer*
+
+# Education
+:::tip[B.E. Computer Engineering @ [Stevens Institute of Technology, Hoboken, NJ](https://www.stevens.edu/)]
+**Dean's List**: Spring 2024, Fall 2024, Spring 2025
 :::
-:::tip[[Stevens Institute of Technology, Hoboken, NJ](https://www.stevens.edu/)]
-*Introduction to Programming - Recitation Teacher*
-:::
-:::tip[[EH Yang Research Group, Hoboken, NJ](https://www.stevens.edu/advanced-quantum-materials-lab/members/alumni)]
-*Nanotechnology - Research Assistant*
-:::
-:::tip[[Avon, Suffern, NY](https://www.avon.com)]
-*PET - Engineer Intern*
-:::
-:::tip[[Morgan Stanley, New York City, NY](https://nicolexan.github.io/Project-SeaTurtles/)]
-*Girls Who Code Summer Immersion Program - Intern*
-:::
+
 > Whatever you do, work from the soul [that is, put in your very best effort], as [something done] for the Lord and not for men, Colossians 3:23

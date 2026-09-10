@@ -6,9 +6,10 @@
 - **AWS Cloud**: IAM, EC2, S3, CloudWatch, Certificate Manager, Amplify, Auto Scaling, Elastic Load Balancing, DynamoDB, Route53, CloudFront, IAM Identity Center, EKS, ECR, VPC, RDS, KMS, ElastiCache
 - **DevOps**: Git, GitHub Actions, JFrog Artifactory, Docker, Snyk, Jenkins, Terraform
 - **Programming**: Python, Bash, YAML, JSON, C++, Java, REST APIs
-- **OS**: Windows, Linux, Ubuntu, RHEL8
+- **OS**: Windows, Linux, Ubuntu, RHEL8, MacOS
 - **Productivity**: Microsoft Office, Google Workspace, Notion, Confluence, Jira, Canva, Claude, Codex
 - **Languages**: English (Native), Spanish (Conversational), German, Korean (Beginner)
+- **AI Development**: Cursor, Claude, Claude CoWork, ChatGPT
 :::
 
 :::note
